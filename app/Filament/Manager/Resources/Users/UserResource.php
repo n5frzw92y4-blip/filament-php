@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Users;
+namespace App\Filament\Manager\Resources\Users;
 
-use App\Filament\Resources\Users\Pages\CreateUser;
-use App\Filament\Resources\Users\Pages\EditUser;
-use App\Filament\Resources\Users\Pages\ListUsers;
-use App\Filament\Resources\Users\Schemas\UserForm;
-use App\Filament\Resources\Users\Tables\UsersTable;
-use App\Filament\Resources\Users\Widgets\UserCounterWidget;
+use App\Filament\Manager\Resources\Users\Pages\CreateUser;
+use App\Filament\Manager\Resources\Users\Pages\EditUser;
+use App\Filament\Manager\Resources\Users\Pages\ListUsers;
+use App\Filament\Manager\Resources\Users\Schemas\UserForm;
+use App\Filament\Manager\Resources\Users\Tables\UsersTable;
 use App\Models\User;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -19,11 +18,9 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::UserGroup;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'name';
-
-    protected static string|\UnitEnum|null $navigationGroup = "Masters";
 
     public static function form(Schema $schema): Schema
     {
@@ -39,12 +36,6 @@ class UserResource extends Resource
     {
         return [
             //
-        ];
-    }
-    public static function getWidgets(): array
-    {
-        return [
-            UserCounterWidget::class,
         ];
     }
 
