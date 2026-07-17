@@ -7,13 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
+        "team_id",
         "name",
-        "sku",
-        "description",
         "price",
-        "stock",
-        "image",
-        "is_active",
-        "is_featured"
+        "category_id"
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

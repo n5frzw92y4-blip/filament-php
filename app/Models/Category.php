@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = [
-        'name',
-        'slug'
+        'name', 'team_id'
     ];
 
-    public function posts(){
-        return $this->HasMany(Post::class);
+    public function team(){
+        return $this->belongsTo(Team::class);
     }
 }

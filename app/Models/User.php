@@ -4,15 +4,20 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Filament\Models\Contracts\HasTenants;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
-#[Fillable(['name', 'email', 'password','country_id','state_id','city_id','type'])]
+#[Fillable(['name', 'email', 'password','type'])]
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+class User extends Authenticatable implements HasTenants
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -30,14 +35,19 @@ class User extends Authenticatable
         ];
     }
 
-    public function city(){
-        return $this->belongsTo(City::class);
+    public function teams(): BelongsToMany
+    {
+        return $this->belongsToMany(Team::class);
     }
-    public function state(){
-        return $this->belongsTo(State::class);
+
+    public function getTenants(Panel $panel): Collection
+    {
+        return $this->teams;
     }
-    public function country(){
-        return $this->belongsTo(Country::class);
+
+    public function canAccessTenant(Model $tenant): bool
+    {
+        return $this->teams()->whereKey($tenant)->exists();
     }
 
     public function isAdmin(){
