@@ -5,6 +5,8 @@ namespace App\Providers\Filament;
 use App\Filament\Pages\Tenancy\EditTeamProfile;
 use App\Filament\Pages\Tenancy\RegisterTeam;
 use App\Models\Team;
+use Filament\Auth\MultiFactor\App\AppAuthentication;
+use Filament\Auth\MultiFactor\Email\EmailAuthentication;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -62,7 +64,14 @@ class AdminPanelProvider extends PanelProvider
             ->tenant(Team::class)
             ->tenantRegistration(RegisterTeam::class)
             ->tenantProfile(EditTeamProfile::class)
-            ->registration();
+            ->registration()
+            ->profile()
+            ->multiFactorAuthentication([
+                AppAuthentication::make(),
+                EmailAuthentication::make(),
+            ])
+            ->databaseNotifications();
+
 
     }
 }
