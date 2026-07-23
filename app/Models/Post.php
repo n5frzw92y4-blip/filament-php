@@ -33,4 +33,8 @@ class Post extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

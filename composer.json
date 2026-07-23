@@ -12,6 +12,7 @@
         "laravel/framework": "^13.8",
         "laravel/tinker": "^3.0",
         "prism-php/prism": "^0.100.1",
+        "saade/filament-fullcalendar": "v4.0.0-beta7",
         "spykapps/theme-inverness": "^1.0"
     },
     "require-dev": {

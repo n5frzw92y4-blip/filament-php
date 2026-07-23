@@ -24,6 +24,7 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
 use SpyApp\ThemeInverness\ThemeInvernessPlugin;
 
 class AdminPanelProvider extends PanelProvider
@@ -77,7 +78,12 @@ class AdminPanelProvider extends PanelProvider
                 EmailAuthentication::make(),
             ])
             ->databaseNotifications()
-            ->plugin(ThemeInvernessPlugin::make());
+            ->plugins(
+                [ThemeInvernessPlugin::make(),
+                FilamentFullCalendarPlugin::make()
+                    ->selectable()
+                    ->editable()
+                ]);
 
 
     }

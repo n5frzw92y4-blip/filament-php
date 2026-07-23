@@ -30,6 +30,8 @@ class PostsTable
                 TextColumn::make("id")
                     ->label("ID")
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make("comments_count")
+                    ->counts("comments"),
                 ImageColumn::make('image')->disk("public")->toggleable(),
                 TextColumn::make('title')
                     ->sortable()
