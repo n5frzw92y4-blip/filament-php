@@ -3,7 +3,9 @@
 
 namespace App\Filament\Pages\Tenancy;
 
+
 use App\Models\Team;
+use App\Mail\WelcomeMail;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Tenancy\RegisterTenant;
 use Filament\Schemas\Schema;

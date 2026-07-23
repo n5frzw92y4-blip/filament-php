@@ -33,10 +33,11 @@ class PostsTable
                 TextColumn::make("comments_count")
                     ->counts("comments"),
                 ImageColumn::make('image')->disk("public")->toggleable(),
-                TextColumn::make('title')
+                TextColumn::make('title')->label(__("resource.post.title"))
                     ->sortable()
                     ->searchable()->toggleable(),
                 TextColumn::make('slug')
+                    ->label(__("resource.post.slug"))
                     ->sortable()
                     ->searchable()->toggleable(),
                 TextColumn::make('category.name')

@@ -7,3 +7,5 @@
 
 @source '../../../../vendor/saade/filament-fullcalendar/resources/views/**/*.blade.php';
 
+@source '../../../../vendor/bezhansalleh/filament-language-switch/**';
+

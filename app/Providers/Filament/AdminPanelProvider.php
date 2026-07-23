@@ -7,6 +7,7 @@ use App\Filament\Pages\Tenancy\RegisterTeam;
 use App\Models\Team;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Auth\MultiFactor\Email\EmailAuthentication;
+use Filament\Auth\Pages\Register;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -79,12 +80,14 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->databaseNotifications()
             ->plugins(
-                [ThemeInvernessPlugin::make(),
-                FilamentFullCalendarPlugin::make()
-                    ->selectable()
-                    ->editable()
+                [
+                    ThemeInvernessPlugin::make(),
+                    FilamentFullCalendarPlugin::make()
+                        ->selectable()
+                        ->editable(),
                 ]);
 
 
     }
+
 }

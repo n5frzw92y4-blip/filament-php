@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\Categories\Schemas;
 
-use Dom\Text;
+use App\Models\Post;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CategoryForm
 {
